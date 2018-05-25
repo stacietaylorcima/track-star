@@ -1,10 +1,12 @@
 class RegisteredApplicationsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @registered_application = RegisteredApplication.all
   end
 
   def show
-    @registered_application = RegisteredApplication.find(params[:name])
+    @registered_application = RegisteredApplication.find(params[:id])
   end
 
   def new
@@ -13,8 +15,9 @@ class RegisteredApplicationsController < ApplicationController
 
   def create
     @registered_application = RegisteredApplication.new(registered_application_params)
+    @registered_application.user = current_user
 
-    if @registered_application.create
+    if @registered_application.save
       flash[:notice] = "\"#{@registered_application.name}\" was successfully created."
       redirect_to @registered_application
     else
@@ -24,11 +27,11 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def edit
-    @registered_application = RegisteredApplication.find(params[:name])
+    @registered_application = RegisteredApplication.find(params[:id])
   end
 
   def update
-    @registered_application = RegisteredApplication.find(params[:name])
+    @registered_application = RegisteredApplication.find(params[:id])
     @registered_application.assign_attributes(registered_application_params)
 
     if @registered_application.save
@@ -41,7 +44,7 @@ class RegisteredApplicationsController < ApplicationController
   end
 
   def destroy
-    @registered_application = RegisteredApplication.find(params[:name])
+    @registered_application = RegisteredApplication.find(params[:id])
 
     if @registered_application.destroy
       flash[:notice] = "\"#{@registered_application.name}\" was successfully removed."

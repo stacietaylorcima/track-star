@@ -1,2 +1,8 @@
-<h1>RegisteredApplications#show</h1>
-<p>Find me in app/views/registered_applications/show.html.erb</p>
+<h1><%= @registered_application.name %></h1>
+<small> <%= @registered_application.url %> <br> submitted <%= time_ago_in_words(@registered_application.created_at) %> ago </small>
+
+
+<div>
+  <%= link_to "Edit", edit_registered_application_path(@registered_application), class: 'btn btn-info' %>
+  <%= link_to "Delete", @registered_application, method: :delete, class: 'btn btn-danger' %>
+</div>
