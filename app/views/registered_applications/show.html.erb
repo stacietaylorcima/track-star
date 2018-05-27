@@ -1,7 +1,9 @@
 <h1><%= @registered_application.name %></h1>
 <small> <%= @registered_application.url %> <br> submitted <%= time_ago_in_words(@registered_application.created_at) %> ago </small>
-
-
+  <% @events.each do |event| %>
+    <p><%= event[1] %></p>
+  <% end %>
+  <p><%= @events.count %> total count for this app</p>
 <div>
   <%= link_to "Edit", edit_registered_application_path(@registered_application), class: 'btn btn-info' %>
   <%= link_to "Delete", @registered_application, method: :delete, class: 'btn btn-danger' %>

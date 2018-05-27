@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+require 'devise'
+include Faker
+
+10.times do
+	RegisteredApplication.create!(
+		name: Faker::Lorem.word,
+		url: Faker::Internet.url,
+		user: User.first
+		)
+end
+
+20.times do
+	Event.create!(
+		name: Faker::Lorem.word,
+		registered_application: RegisteredApplication.first
+		)
+end
+
+puts "Seed finished"
+puts "#{RegisteredApplication.count} registered applications created"
+puts "#{Event.count} events created"
