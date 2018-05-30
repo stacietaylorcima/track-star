@@ -10,6 +10,14 @@ require 'devise'
 include Faker
 
 10.times do
+	User.create!(
+		email: Faker::Internet.unique.safe_email,
+		password: 'helloworld',
+		password_confirmation: 'helloworld'
+		)
+end
+
+10.times do
 	RegisteredApplication.create!(
 		name: Faker::Lorem.word,
 		url: Faker::Internet.url,
@@ -25,5 +33,6 @@ end
 end
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{RegisteredApplication.count} registered applications created"
 puts "#{Event.count} events created"
