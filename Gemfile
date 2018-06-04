@@ -55,5 +55,8 @@ source 'https://rubygems.org'
   gem 'factory_bot_rails'
   # Use devise to implement user sign up and login
   gem 'devise'
-  # Use faker to seed data 
+  # Use faker to seed data
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+# Use chartkick to display graphs
+  gem 'chartkick'
+  gem 'groupdate'

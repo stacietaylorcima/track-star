@@ -19,7 +19,7 @@ end
 
 10.times do
 	RegisteredApplication.create!(
-		name: Faker::Lorem.word,
+		name: Faker::App.name,
 		url: Faker::Internet.url,
 		user: User.first
 		)
@@ -27,8 +27,9 @@ end
 
 20.times do
 	Event.create!(
-		name: Faker::Lorem.word,
-		registered_application: RegisteredApplication.first
+		name: Faker::HitchhikersGuideToTheGalaxy.starship,
+		registered_application: RegisteredApplication.first,
+		created_at: Faker::Date.backward(100)
 		)
 end
 
