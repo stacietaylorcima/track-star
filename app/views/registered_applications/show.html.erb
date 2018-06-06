@@ -1,16 +1,23 @@
-<h1><%= @registered_application.name %></h1>
-<small> <%= @registered_application.url %> <br> submitted <%= time_ago_in_words(@registered_application.created_at) %> ago </small>
-  <% @events.each do |event| %>
-    <p><%= event[0] %> <%= event[1] %> </p>
-  <% end %>
-
-  <p><%= @events.count %> unique events</p>
-  <p><%= @unique_events %> total events</p>
-
-<div>
-  <%= link_to "Edit", edit_registered_application_path(@registered_application), class: 'btn btn-info' %>
-  <%= link_to "Delete", @registered_application, method: :delete, class: 'btn btn-danger' %>
+<h1><%= @registered_application.name %></h1><small><%= @registered_application.url %><br>
+submitted <%= time_ago_in_words(@registered_application.created_at) %> ago</small>
+<div class="app-buttons">
+  <%= link_to "Edit", edit_registered_application_path(@registered_application), class: 'btn btn-info' %><%= link_to "Delete", @registered_application, method: :delete, class: 'btn btn-danger' %>
 </div>
-
-<%= pie_chart @registered_application.events.group(:name).count %>
-<%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+<h3><%= @events.count %> unique events</h3>
+<h3><%= @unique_events %> total events</h3>
+<div class="chart">
+  <%= pie_chart @registered_application.events.group(:name).count %>
+</div>
+<div class="chart">
+  <%= line_chart @registered_application.events.group_by_day(:created_at).count %>
+</div>
+<hr>
+<div class="events-list">
+  <%@events.each do |event| %>
+    <ul>
+      <li>
+        <%= event[0] %> | <%= event[1] %>
+      </li>
+    </ul>
+  <% end %>
+</div>
