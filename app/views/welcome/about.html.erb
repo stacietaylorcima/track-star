@@ -1,1 +1,64 @@
-<h1>Learn more about TrackStar</h1>
+<h1>About TrackStar</h1>
+<p>Created by: Stacie Taylor-Cima</p>
+<div class="social">
+  <ul>
+    <li><a href="https://twitter.com/simply_cima"><img alt="Contact image" src="https://i.imgur.com/RQPD8dE.png"></a></li>
+    <li><a href="https://www.instagram.com/simply_cima"><img alt="Contact image" src="https://i.imgur.com/FFAWA16.png"></a></li>
+    <li><a href="https://www.linkedin.com/in/stacietaylorcima"><img alt="Contact image" src="https://i.imgur.com/rFEJoiW.png"></a></li>
+    <li><a href="https://github.com/stacietaylorcima"><img alt="Contact image" src="https://i.imgur.com/7x1oaCH.png"></a></li>
+  </ul>
+</div>
+<hr>
+<h3>Languages and Frameworks:</h3>
+<ul>
+  <li>Rails version 5.1.2</li>
+  <li>Ruby version 2.2.1</li>
+</ul>
+<h3>Databases:</h3>
+<ul>
+  <li>SQLite (Test, Development)</li>
+  <li>PostgreSQL (Production)</li>
+</ul>
+<h3>Development Tools and Gems include:</h3>
+<ul>
+  <li>BCrypt for secure passwords</li>
+  <li>SendGrid for email confirmation</li>
+  <li>Faker for seed data</li>
+  <li>Chartkick for data graphs</li>
+  <li>Groupdate for line charts with historical data</li>
+</ul>
+<hr>
+<h1>Get Started with TrackStar</h1>
+<ul>
+  <li>Create account using email, and password</li>
+  <li>Register your app</li>
+  <li>Add the following Javascript snippet to your app's application.js file</li>
+</ul>
+<pre>
+<code>
+  var trackstar = {};
+  trackstar.report = function(eventName){
+    // create an event JSON object to send to the TrackStar analytics service
+    var event = {event: { name: eventName }};
+    // initialize a new XMLHttpRequest() (AJAX request)
+    var request = new XMLHttpRequest();
+    // set the HTTP method to POST, the url of our events endpoint, and allow the request to run asynchronously
+    request.open("POST", "http://localhost:3000/api/events", true);
+    // set the request Content-Type header to 'application/json'
+    request.setRequestHeader('Content-Type', 'application/json');
+    // send the request
+    request.send(JSON.stringify(event));
+  };
+</code>
+</pre>
+<ul>
+  <li>Now, you can now call this function to help you track events such as click events:</li>
+</ul><!--
+<code>
+<a href="/about" onclick="trackstar.report('about link clicked')">
+</code>
+<code>
+<li><%= link_to "Your Tab", root_path, :onclick => "trackstar.report('home link clicked')" %></li>
+</code>  or even execute when a page is loaded:
+<script>trackstar.report('about page loaded');</script>
+</code> -->

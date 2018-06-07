@@ -1,8 +1,21 @@
 # TrackStar
+## Languages and Frameworks:
+  * Rails version 5.1.2
+  * Ruby version 2.2.1
+## Databases:
+  * SQLite (Test, Development)</li>
+  * PostgreSQL (Production)</li>
+## Development Tools and Gems include:
+  * BCrypt for secure passwords
+  * SendGrid for email confirmation
+  * Faker for seed data
+  * Chartkick for data graphs
+  * Groupdate for line charts with historical data
 
-* Sign up for a TrackStar account
-* Register your application with TrackStar
-* Add the following Javascript Snippet to your apps `application.js` file:
+## Get Started with TrackSmart
+  * Sign up for a TrackStar account
+  * Register your application with TrackStar
+  * Add the following Javascript Snippet to your apps `application.js` file:
 ```
 var trackstar = {};
 trackstar.report = function(eventName){
@@ -18,14 +31,14 @@ trackstar.report = function(eventName){
   request.send(JSON.stringify(event));
 };
 ```
-* Now, you can now call this function to help you track events such as click events:
+  * Now, you can now call this function to help you track events such as click events:
 ```
 <a href="/about" onclick="trackstar.report('about link clicked')">
 ```
 ```
-<li><%= link_to "Explorit", root_path, :onclick => "trackstar.report('home link clicked')" %></li>
+<li><%= link_to "Your Tab", root_path, :onclick => "trackstar.report('home link clicked')" %></li>
 ```
-or even execute when a page is loaded:
+  or even execute when a page is loaded:
 ```
 <script>trackstar.report('about page loaded');</script>
 ```
